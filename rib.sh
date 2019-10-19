@@ -4,8 +4,8 @@ APPNAME=$(basename $0 | sed "s/\.sh$//")
 
 # Functions
 fn_help() {
-	bold_start=$(tput bold)
-	bold_end=$(tput sgr0)
+	local bold_start=$(tput bold)
+	local bold_end=$(tput sgr0)
 	echo "${bold_start}SYNOPSIS${bold_end}"
     echo "	${bold_start}irb${bold_end} SOURCE DEST [OPTION]..."
 	echo "${bold_start}OPTIONS${bold_end}"
