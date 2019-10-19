@@ -7,15 +7,19 @@ EXCLUDE=('*.tgz' '/cache')
 DEST="/tmp/backup/"
 
 #---------------------------------------------
+APPNAME=$(basename $0 | sed "s/\.sh$//")
+LOG_DIR="$HOME/.$APPNAME"
+
 DATE=$(date +"%Y-%m-%d_%H:%M:%S")
 
-#create backup dir
+#create dirs
 mkdir -p $DEST
+mkdir -p $LOG_DIR
 
 #last backup
 LASTBU=$(ls $DEST -t | head -n1)
 
-LOGFILE="backup_log_"$DATE
+LOGFILE=$LOG_DIR"/backup_log_"$DATE".log"
 
 NEXTBU=$DEST$DATE
 PREVBU=$DEST$LASTBU
