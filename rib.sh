@@ -4,7 +4,13 @@ APPNAME=$(basename $0 | sed "s/\.sh$//")
 
 # Functions
 fn_help() {
-	echo 'help...'
+	bold_start=$(tput bold)
+	bold_end=$(tput sgr0)
+	echo "${bold_start}SYNOPSIS${bold_end}"
+    echo "	${bold_start}irb${bold_end} SOURCE DEST [OPTION]..."
+	echo "${bold_start}OPTIONS${bold_end}"
+	echo "	${bold_start}-e${bold_end} PATTERN"
+	echo "		exclude files matching PATTERN" 
 }
 
 fn_error() { echo "$APPNAME: [ERROR] $1" 1>&2; }
