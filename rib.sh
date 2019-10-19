@@ -68,7 +68,7 @@ RSYNC="rsync -avzh --no-owner --no-group --delete --log-file=$LOGFILE --link-des
 
 # Append exclude
 for i in "${EXCLUDE[@]}"; do
- RSYNC=$RSYNC' --exclude="'$i'"'
+ RSYNC=$RSYNC' --exclude='$i
 done
 
 # Run
