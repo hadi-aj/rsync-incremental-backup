@@ -15,6 +15,15 @@ fn_help() {
 
 fn_error() { echo "$APPNAME: [ERROR] $1" 1>&2; }
 
+fn_trailing_slash() {
+	local STR=$1
+	local length=${#STR}
+	local last_char=${STR:length-1:1}
+
+	[[ $last_char != "/" ]] && STR="$STR/"; :
+	echo $STR
+}
+
 # Loop get parameters
 while [ "$1" != "" ]; do
 	case $1 in
@@ -46,6 +55,9 @@ if [[ -z "$SRC" || -z "$DEST" ]]; then
 	fn_help
 	exit 1
 fi
+
+SRC=$(fn_trailing_slash $SRC)
+DEST=$(fn_trailing_slash $DEST)
 
 LOG_DIR="$HOME/.$APPNAME"
 
